@@ -8,9 +8,10 @@ echo "Starting Ollama with auto-pull for model: $MODEL"
 # Ensure Ollama daemon is running in background
 ollama serve &
 
-# Wait until Ollama API is reachable
-until curl -sf http://localhost:11434/api/version > /dev/null; do
-  echo "Waiting for Ollama to start..."
+# Wait until Ollama API is reachable (using ollama list as health check)
+echo "Waiting for Ollama to start..."
+until ollama list > /dev/null 2>&1; do
+  echo "Waiting for Ollama daemon..."
   sleep 2
 done
 
