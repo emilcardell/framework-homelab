@@ -26,7 +26,7 @@ services:
     depends_on:
       - ollama
     environment:
-      - OLLAMA_API_BASE=http://ollama:11434
+      - OLLAMA_API_BASE=https://ollama.varelsen.app
     ports:
       - "3000:8080"
     volumes:
